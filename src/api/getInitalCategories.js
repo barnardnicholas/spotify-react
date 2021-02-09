@@ -1,7 +1,7 @@
 import api from '.';
 import getToken from './getToken';
 
-const getAllCategories = async () => {
+const getInitalCategories = async () => {
     try {
         const token = await getToken();
         const headers = { Authorization: token };
@@ -12,4 +12,4 @@ const getAllCategories = async () => {
     }
 };
 
-export default getAllCategories;
+export default getInitalCategories;
