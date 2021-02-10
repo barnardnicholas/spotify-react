@@ -9,7 +9,7 @@ You'll be send a .env file that contains Spotify client keys that will need addi
 # Minimum Requirements
 
  - Build a paginated user interface to view the subsequent categories.
- - Update the existing code to use hooks.
+ - Utilise a custom hook for fetching categories.
  - Output the total number of pages.
 
 ##
