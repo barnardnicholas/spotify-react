@@ -1,3 +1,5 @@
+import Header from './Header';
+
 import { useEffect, useState } from 'react';
 import getInitalCategories from '../api/getInitalCategories';
 
@@ -10,14 +12,13 @@ function App() {
     }, []);
     return (
         <div className="App">
-            <h2 style={{ textAlign: 'center', fontWeight: 200, fontSize: 40 }}>Spotichip</h2>
+            <Header />
             <section
                 style={{
                     display: 'flex',
                     flexWrap: 'wrap',
                     alignContent: 'space-between',
                     justifyContent: 'space-between',
-                    margin: '1em',
                 }}
             >
                 {categories.map(cat => (
