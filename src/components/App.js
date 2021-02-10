@@ -10,6 +10,7 @@ function App() {
             .then(data => setCategories(data.items))
             .catch(e => console.log('oh no!', e));
     }, []);
+
     return (
         <div className="App">
             <Header />
