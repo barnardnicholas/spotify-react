@@ -1,7 +1,9 @@
+import Header from './Header';
+
 function App() {
     return (
         <div className="App">
-            <h2>Spotichip</h2>
+            <Header />
         </div>
     );
 }
