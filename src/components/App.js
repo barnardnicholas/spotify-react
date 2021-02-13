@@ -6,7 +6,7 @@ import getPaginatedCategories from '../api/getPaginatedCategories';
 function App() {
   const [cats, setCats] = useState({ items: [], limit: 10, offset: 0, total: 0 });
 
-  // Get locale from borwser if possible
+  // Get locale from borwser if possible - pagination was glitchy when unset
   let locale = navigator.languages || ['en-US'];
 
   useEffect(() => {

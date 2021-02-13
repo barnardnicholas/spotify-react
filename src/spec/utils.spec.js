@@ -40,4 +40,8 @@ describe('makeQuery', () => {
       '?someKey=someValue&anotherKey=anotherValue&aDifferentKey=aDifferentValue',
     );
   });
+  it('returns an valid query string when passed multiple values in a single argument', () => {
+    const args = { someKey: ['someValue', 'someOtherValue'] };
+    expect(makeQuery(args)).to.equal('?someKey=someValue,someOtherValue');
+  });
 });
