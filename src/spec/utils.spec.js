@@ -24,4 +24,20 @@ describe('makeQuery', () => {
     expect(makeQuery(args3)).to.equal('');
     expect(makeQuery(args4)).to.equal('');
   });
+  it('returns an valid query string when passed a single valid argument', () => {
+    const args = { someKey: 'someValue' };
+    expect(makeQuery(args)).to.equal('?someKey=someValue');
+  });
+  it('returns an valid query string when passed multiple valid arguments', () => {
+    const args = { someKey: 'someValue', anotherKey: 'anotherValue' };
+    const args2 = {
+      someKey: 'someValue',
+      anotherKey: 'anotherValue',
+      aDifferentKey: 'aDifferentValue',
+    };
+    expect(makeQuery(args)).to.equal('?someKey=someValue&anotherKey=anotherValue');
+    expect(makeQuery(args2)).to.equal(
+      '?someKey=someValue&anotherKey=anotherValue&aDifferentKey=aDifferentValue',
+    );
+  });
 });

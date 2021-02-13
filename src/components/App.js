@@ -6,8 +6,12 @@ import getPaginatedCategories from '../api/getPaginatedCategories';
 function App() {
   const [cats, setCats] = useState({ items: [], limit: 10, offset: 0, total: 0 });
 
+  // Get locale from borwser if possible
+  let locale = navigator.languages || ['en-US'];
+
   useEffect(() => {
-    getPaginatedCategories(cats.offset, cats.limit)
+    const { offset, limit } = cats;
+    getPaginatedCategories({ offset, limit, locale })
       .then(data => setCats(data))
       .catch(e => console.log('oh no!', e));
   }, [cats.offset, cats.limit]);

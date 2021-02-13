@@ -1,20 +1,25 @@
 const makeQuery = queryObj => {
   // Expects query object with keys/values as terms
   // Returns completed query string if complete, empty string if invalid
-
   try {
+    let result = '';
     const keys = Object.keys(queryObj);
-    if (!keys.length) return '';
-    else return '?somequery=true';
+    if (!keys.length) return result;
+    else {
+      result += '?';
+      result += keys
+        .map(key => {
+          if (queryObj[key]) return `${key}=${queryObj[key]}`;
+          else return '';
+        })
+        .join('&');
+      return result;
+    }
   } catch (e) {
     console.log('oops - ', e);
     return '';
   }
-
-  // Assemble query from arguments
-  let query = offset || limit ? '?locale=en_GB&' : '';
-  if (offset) query += `offset=${offset}`;
-  if (limit) query += `${offset ? '&' : ''}limit=${limit}`;
 };
 
-module.exports = { makeQuery };
+// module.exports = { makeQuery }; // Export for TTD
+export { makeQuery }; // Export for app
