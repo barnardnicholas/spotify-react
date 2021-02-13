@@ -1,13 +1,13 @@
 import Header from './Header';
 
 import { useEffect, useState } from 'react';
-import getInitalCategories from '../api/getInitalCategories';
+import getPaginatedCategories from '../api/getPaginatedCategories';
 
 function App() {
   const [cats, setCats] = useState({ items: [], limit: 8, offset: 0, total: 0 });
 
   useEffect(() => {
-    getInitalCategories()
+    getPaginatedCategories()
       .then(data => setCats(data))
       .catch(e => console.log('oh no!', e));
   }, []);
