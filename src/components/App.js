@@ -28,10 +28,18 @@ function App() {
       <Header />
       <div className="pseudo-header"></div>
       <div className="btns">
-        <button className="btn" onClick={handleClickPrev}>
+        <button
+          className="btn"
+          onClick={handleClickPrev}
+          disabled={cats.offset <= 0 ? true : false}
+        >
           {'<'}
         </button>
-        <button className="btn" onClick={handleClickNext}>
+        <button
+          className="btn"
+          onClick={handleClickNext}
+          disabled={cats.total - cats.limit <= cats.offset ? true : false}
+        >
           {'>'}
         </button>
       </div>
