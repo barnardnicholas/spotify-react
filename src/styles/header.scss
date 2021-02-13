@@ -1,5 +1,9 @@
 @import './variables.scss';
 
+.pseudo-header {
+  height: 50px;
+}
+
 .header {
   background-color: $white;
   position: fixed;
@@ -26,6 +30,66 @@
   padding-left: 10px;
 }
 
-.pseudo-header {
-  height: 50px;
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding-right:0.5em;
+}
+
+.btn {
+  border: none;
+  border-radius: 25px 25px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 9px 15px;
+  color: $blue;
+  background-color: $white;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+  border: 1px solid $light-gray;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(63, 125, 196, 0.2);
+  }
+
+  &:hover {
+    background-color: $dark-blue;
+    color: $white;
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    color: $light-gray;
+  }
+
+  &:first-child {
+    margin-right: 0.25em;
+  }
+
+  &.blue {
+    background-color: $blue;
+    color: $white;
+
+    &:hover {
+      background-color: $dark-blue;
+    }
+  }
+
+  &.clear {
+    background-color: transparent;
+
+    &:hover {
+      color: $blue;
+      opacity: 0.8;
+    }
+  }
 }

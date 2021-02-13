@@ -1,11 +1,12 @@
 import '../styles/header.scss';
 
-function Header() {
-    return (
-        <header className="header">
-            <div className="logo">Spotichip</div>
-        </header>
-    );
+function Header(props) {
+  return (
+    <header className="header">
+      <div className="logo">Spotichip</div>
+      {props.children}
+    </header>
+  );
 }
 
 export default Header;

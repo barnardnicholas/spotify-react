@@ -25,24 +25,26 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header>
+        <div className="btns">
+          <button
+            className="btn"
+            onClick={handleClickPrev}
+            disabled={cats.offset <= 0 ? true : false}
+          >
+            {'<'}
+          </button>
+          <button
+            className="btn"
+            onClick={handleClickNext}
+            disabled={cats.total - cats.limit <= cats.offset ? true : false}
+          >
+            {'>'}
+          </button>
+        </div>
+      </Header>
       <div className="pseudo-header"></div>
-      <div className="btns">
-        <button
-          className="btn"
-          onClick={handleClickPrev}
-          disabled={cats.offset <= 0 ? true : false}
-        >
-          {'<'}
-        </button>
-        <button
-          className="btn"
-          onClick={handleClickNext}
-          disabled={cats.total - cats.limit <= cats.offset ? true : false}
-        >
-          {'>'}
-        </button>
-      </div>
+
       <section className="results">
         {cats.items.map(cat => (
           <div className="result-tile" key={cat.id} onClick={() => {}}>
