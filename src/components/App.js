@@ -15,17 +15,11 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <section
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignContent: 'space-between',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className="pseudo-header"></div>
+      <section className="results">
         {cats.items.map(cat => (
-          <div key={cat.id} onClick={() => {}} style={{ cursor: 'pointer' }}>
-            <h2 style={{ textAlign: 'center', fontWeight: 200 }}>{cat.name}</h2>
+          <div className="result-tile" key={cat.id} onClick={() => {}}>
+            <h2>{cat.name}</h2>
             <img
               src={cat.icons[0].url}
               alt={cat.name}
