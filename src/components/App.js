@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import getInitalCategories from '../api/getInitalCategories';
 
 function App() {
-  const [categories, setCategories] = useState([]);
+  const [cats, setCats] = useState({ items: [], limit: 8, offset: 0, total: 0 });
+
   useEffect(() => {
     getInitalCategories()
-      .then(data => setCategories(data.items))
+      .then(data => setCats(data))
       .catch(e => console.log('oh no!', e));
   }, []);
 
@@ -22,7 +23,7 @@ function App() {
           justifyContent: 'space-between',
         }}
       >
-        {categories.map(cat => (
+        {cats.items.map(cat => (
           <div key={cat.id} onClick={() => {}} style={{ cursor: 'pointer' }}>
             <h2 style={{ textAlign: 'center', fontWeight: 200 }}>{cat.name}</h2>
             <img
