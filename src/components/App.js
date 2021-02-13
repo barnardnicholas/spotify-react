@@ -7,10 +7,10 @@ function App() {
   const [cats, setCats] = useState({ items: [], limit: 8, offset: 0, total: 0 });
 
   useEffect(() => {
-    getPaginatedCategories(5, 5)
+    getPaginatedCategories(cats.offset, cats.limit)
       .then(data => setCats(data))
       .catch(e => console.log('oh no!', e));
-  }, []);
+  }, [cats.offset, cats.limit]);
 
   const handleClickPrev = () => {
     let offset = cats.offset - cats.limit;
