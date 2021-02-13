@@ -7,7 +7,7 @@ function App() {
   const [cats, setCats] = useState({ items: [], limit: 8, offset: 0, total: 0 });
 
   useEffect(() => {
-    getPaginatedCategories()
+    getPaginatedCategories(30)
       .then(data => setCats(data))
       .catch(e => console.log('oh no!', e));
   }, []);

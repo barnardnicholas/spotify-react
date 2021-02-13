@@ -1,11 +1,14 @@
 import api from '.';
 import getToken from './getToken';
 
-const getPaginatedCategories = async (offset = 0, limit = 8) => {
+const getPaginatedCategories = async (offset = 0) => {
+  // Assemble query from arguments
+  let query = offset ? `?offset=${offset}` : '';
+
   try {
     const token = await getToken();
     const headers = { Authorization: token };
-    const { data } = await api.get('browse/categories/', { headers });
+    const { data } = await api.get(`browse/categories/${query}`, { headers });
     console.dir(data);
     return data.categories;
   } catch (error) {
