@@ -4,11 +4,16 @@ import './styles/index.scss';
 import App from './components/App';
 import reportWebVitals from './utils/reportWebVitals';
 
+// Use DOTENV to bring in environment variables
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root'),
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
