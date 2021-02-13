@@ -1,9 +1,11 @@
 import api from '.';
 import getToken from './getToken';
 
-const getPaginatedCategories = async (offset = 0) => {
+const getPaginatedCategories = async (offset = 0, limit = 20) => {
   // Assemble query from arguments
-  let query = offset ? `?offset=${offset}` : '';
+  let query = offset || limit ? '?' : '';
+  if (offset) query += `offset=${offset}`;
+  if (limit) query += `${offset ? '&' : ''}limit=${limit}`;
 
   try {
     const token = await getToken();

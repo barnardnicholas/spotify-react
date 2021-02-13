@@ -7,15 +7,34 @@ function App() {
   const [cats, setCats] = useState({ items: [], limit: 8, offset: 0, total: 0 });
 
   useEffect(() => {
-    getPaginatedCategories(30)
+    getPaginatedCategories(5, 5)
       .then(data => setCats(data))
       .catch(e => console.log('oh no!', e));
   }, []);
+
+  const handleClickPrev = () => {
+    let offset = cats.offset - cats.limit;
+    if (offset < 0) offset = 0;
+    setCats({ ...cats, offset });
+  };
+  const handleClickNext = () => {
+    let offset = cats.offset + cats.limit;
+    if (offset >= cats.total) offset = cats.total;
+    setCats({ ...cats, offset });
+  };
 
   return (
     <div className="App">
       <Header />
       <div className="pseudo-header"></div>
+      <div className="btns">
+        <button className="btn" onClick={handleClickPrev}>
+          {'<'}
+        </button>
+        <button className="btn" onClick={handleClickNext}>
+          {'>'}
+        </button>
+      </div>
       <section className="results">
         {cats.items.map(cat => (
           <div className="result-tile" key={cat.id} onClick={() => {}}>
