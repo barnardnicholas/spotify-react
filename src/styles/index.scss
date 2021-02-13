@@ -66,6 +66,8 @@ a {
   align-content: space-between;
   justify-content: space-between;
   padding: 2em;
+  overflow-y: scroll;
+  height: calc(100vh - 50px);
 }
 
 .result-tile {

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import getPaginatedCategories from '../api/getPaginatedCategories';
 
 function App() {
-  const [cats, setCats] = useState({ items: [], limit: 8, offset: 0, total: 0 });
+  const [cats, setCats] = useState({ items: [], limit: 10, offset: 0, total: 0 });
 
   useEffect(() => {
     getPaginatedCategories(cats.offset, cats.limit)
@@ -34,6 +34,10 @@ function App() {
           >
             {'<'}
           </button>
+          <span className="page-readout">
+            {Math.floor((cats.offset + cats.limit) / cats.limit)} /{' '}
+            {Math.round(cats.total / cats.limit)}
+          </span>
           <button
             className="btn"
             onClick={handleClickNext}
