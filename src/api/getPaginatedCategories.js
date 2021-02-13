@@ -3,7 +3,7 @@ import getToken from './getToken';
 
 const getPaginatedCategories = async (offset = 0, limit = 20) => {
   // Assemble query from arguments
-  let query = offset || limit ? '?' : '';
+  let query = offset || limit ? '?locale=en_GB&' : '';
   if (offset) query += `offset=${offset}`;
   if (limit) query += `${offset ? '&' : ''}limit=${limit}`;
 
