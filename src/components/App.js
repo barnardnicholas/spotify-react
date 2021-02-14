@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import getPaginatedCategories from '../api/getPaginatedCategories';
 import { dummyItems } from '../data/dummy-data';
 
-console.log(dummyItems);
-
 function App() {
   const [cats, setCats] = useState({ items: dummyItems, limit: 10, offset: 0, total: 0 });
   const [isLoading, setLoading] = useState(true);
