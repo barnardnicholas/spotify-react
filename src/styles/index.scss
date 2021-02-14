@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './animation.scss';
 
 * {
   box-sizing: border-box;
@@ -78,9 +79,27 @@ a {
     text-align: center;
     font-weight: 200;
   }
+
+  &.loading {
+    animation: fade-in-out 1s ease-in-out infinite;
+    h2 {
+      color: transparent;
+      background-color: $light-gray;
+      max-width: 75%;
+      margin: 0 auto 0.5em auto;
+    }
+  }
 }
 
-
+.loader {
+  content: "&nbsp;";
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url('../assets/img/loading.gif')
+}
 
 p {
   margin: 0px 0px 33.5px 0px;

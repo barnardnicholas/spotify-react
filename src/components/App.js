@@ -1,18 +1,26 @@
 import Header from './Header';
-
 import { useEffect, useState } from 'react';
 import getPaginatedCategories from '../api/getPaginatedCategories';
+import { dummyItems } from '../data/dummy-data';
+
+console.log(dummyItems);
 
 function App() {
-  const [cats, setCats] = useState({ items: [], limit: 10, offset: 0, total: 0 });
+  const [cats, setCats] = useState({ items: dummyItems, limit: 10, offset: 0, total: 0 });
+  const [isLoading, setLoading] = useState(true);
 
   // Get locale from borwser if possible - pagination was glitchy when unset
   let locale = navigator.languages || ['en-US'];
 
   useEffect(() => {
     const { offset, limit } = cats;
+    setLoading(true);
     getPaginatedCategories({ offset, limit, locale })
-      .then(data => setCats(data))
+      .then(data => {
+        console.log('DATA: ', data);
+        setCats(data);
+        setLoading(false);
+      })
       .catch(e => console.log('oh no!', e));
   }, [cats.offset, cats.limit]);
 
@@ -39,8 +47,10 @@ function App() {
             {'<'}
           </button>
           <span className="page-readout">
-            {Math.floor((cats.offset + cats.limit) / cats.limit)} /{' '}
-            {Math.round(cats.total / cats.limit)}
+            {isLoading
+              ? '. . .'
+              : `${Math.floor((cats.offset + cats.limit) / cats.limit)} /
+            ${Math.round(cats.total / cats.limit)}`}
           </span>
           <button
             className="btn"
@@ -55,7 +65,11 @@ function App() {
 
       <section className="results">
         {cats.items.map(cat => (
-          <div className="result-tile" key={cat.id} onClick={() => {}}>
+          <div
+            className={`result-tile${isLoading ? ' loading' : ''}`}
+            key={cat.id}
+            onClick={() => {}}
+          >
             <h2>{cat.name}</h2>
             <img
               src={cat.icons[0].url}
