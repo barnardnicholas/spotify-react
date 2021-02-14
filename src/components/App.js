@@ -14,10 +14,8 @@ function App() {
 
   useEffect(() => {
     const { offset, limit } = cats;
-    setLoading(true);
     getPaginatedCategories({ offset, limit, locale })
       .then(data => {
-        console.log('DATA: ', data);
         setCats(data);
         setLoading(false);
       })

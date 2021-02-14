@@ -7,7 +7,6 @@ const getPaginatedCategories = async query => {
     const token = await getToken();
     const headers = { Authorization: token };
     const { data } = await api.get(`browse/categories/${makeQuery(query)}`, { headers });
-    console.dir(data);
     return data.categories;
   } catch (error) {
     console.log({ error });
