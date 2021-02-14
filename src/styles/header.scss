@@ -97,3 +97,47 @@
 .page-readout {
   margin: auto 0.25em;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.easter-egg,
+.easter-egg:visited,
+.easter-egg:active,
+.easter-egg:focus {
+  text-decoration: none;
+  display: inline-block;
+  width: 1.5em;
+  height: 1em;
+  margin-right: 0.25em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-image: url(../assets/img/sclogo.png)
+}
+
